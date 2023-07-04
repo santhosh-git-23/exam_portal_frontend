@@ -3,6 +3,9 @@ pipeline {
     tools {
         maven 'maven'
     }
+    environment{
+        TERM = 'xterm'
+    }
   stages {
         stage('Build') {
             steps {
