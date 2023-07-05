@@ -7,13 +7,24 @@ pipeline {
         TERM = 'xterm'
     }
   stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm ci'
+            }
+        }
         stage('Build') {
             steps {
                 // Build your JAR file here
                 // For example, using Maven
-                sh 'ng build'
+                sh 'npm run build'
             }
         }
+        
         // stage("Jar file transfer"){
         //     steps{
         //         sh """echo 'admin123' | sudo -S mv /var/lib/jenkins/workspace/cicd/target/examportal-0.0.1-SNAPSHOT.jar /home/ubuntu/project/"""
