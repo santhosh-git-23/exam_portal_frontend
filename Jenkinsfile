@@ -25,10 +25,11 @@ pipeline {
             }
         }
         stage('Transfer build file'){
+              steps{
               sh """echo 'admin123' | sudo -S mv /var/lib/jenkins/workspace/cicd-front/dist/examfront/* /usr/share/nginx/html"""
               sh """echo 'admin123' | sudo -S chmod 777 /usr/share/nginx/html/*"""
               sh """sudo systemctl restart nginx"""
-              
+            }
         }
         
         // stage("Jar file transfer"){
